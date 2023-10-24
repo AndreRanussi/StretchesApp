@@ -83,13 +83,15 @@
         app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/item_circular_color_accent_border">
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progressBarExercise"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -97,8 +99,8 @@
             android:background="@drawable/circular_progress_grey"
             android:progressDrawable="@drawable/circular_progress_bar"
             android:indeterminate="false"
-            android:max="10"
-            android:progress="100"
+            android:max="30"
+            android:progress="300"
             android:rotation="-90"
             />
 
@@ -110,13 +112,13 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tvTimer"
+                android:id="@+id/tvTimerExercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:text="10"
+                android:text="30"
                 />
 
 
