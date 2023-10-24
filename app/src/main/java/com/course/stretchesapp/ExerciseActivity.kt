@@ -2,10 +2,17 @@ package com.course.stretchesapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.widget.Toast
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
 
 class ExerciseActivity : AppCompatActivity() {
     private var binding: ActivityExerciseBinding? = null
+    private var restTimer: CountDownTimer? = null
+    private var restPeriod = 10
+    private var restProgress = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -21,11 +28,45 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        setupRestView()
+
     }
 
 
+    private fun setupRestView(){
+        if(restTimer != null ) {
+            restTimer?.cancel()
+            restProgress = 0
+        }
+        setRestProgressBar()
+    }
+
+    private fun setRestProgressBar() {
+        binding?.progressBar?.progress = restProgress
+        binding?.progressBar?.max = restPeriod
+
+        restTimer = object: CountDownTimer((restPeriod * 1000).toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                restProgress++
+                binding?.progressBar?.progress = restPeriod - restProgress
+                binding?.tvTimer?.text = (restPeriod - restProgress).toString()
+            }
+            override fun onFinish() {
+                Toast.makeText(this@ExerciseActivity, "Timer is Up, Start Exercise!", Toast.LENGTH_SHORT).show()
+
+            }
+        }.start()
+
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+
+        if(restTimer != null ) {
+            restTimer?.cancel()
+            restProgress = 0
+        }
+
         binding = null
     }
 
