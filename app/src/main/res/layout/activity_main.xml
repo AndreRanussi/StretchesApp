@@ -23,6 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/myImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llTimerInput"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/item_color_accent_border_ripple_background"
@@ -40,9 +41,78 @@
 
             />
 
-
-
-
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/llTimerInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flStart"
+        android:gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="100dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rest Timer"
+            android:layout_gravity="start"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            />
+
+        <SeekBar
+            android:id="@+id/sbRestTimer"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:max="12"
+            android:progress="3"
+
+            android:thumbTint="#F79306"
+            android:progressTint="#008E24"
+
+
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exercise Timer"
+            android:layout_gravity="start"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            />
+
+        <SeekBar
+            android:id="@+id/sbExerciseTimer"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="12"
+            android:progress="6"
+            android:layout_marginTop="5dp"
+
+            android:thumbTint="#F79306"
+            android:progressTint="#008E24"
+            />
+
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,9 +50,22 @@ class ExerciseActivity : AppCompatActivity() {
 
 
     private fun setupRestView(){
-        binding?.flProgressBar?.visibility = VISIBLE
+        // removing rest view from the UI
+        binding?.flRestView?.visibility = VISIBLE
+        binding?.tvTitle?.visibility = VISIBLE
+
+        // adding the exercise view to the UI
         binding?.flExerciseView?.visibility = INVISIBLE
-        binding?.tvTitle?.text = "GET READY FOR"
+        binding?.tvExerciseName?.visibility = INVISIBLE
+        binding?.ivImage?.visibility = INVISIBLE
+
+
+        binding?.flExerciseView?.visibility = INVISIBLE
+        if (currentExercisePosition < 0) {
+            binding?.tvTitle?.text = "GET READY"
+        } else {
+            binding?.tvTitle?.text = "REST"
+        }
 
         if(restTimer != null ) {
             restTimer?.cancel()
@@ -62,14 +75,23 @@ class ExerciseActivity : AppCompatActivity() {
     }
 
     private fun setupExerciseView(){
-        binding?.flProgressBar?.visibility = INVISIBLE
+        // removing rest view from the UI
+        binding?.flRestView?.visibility = INVISIBLE
+        binding?.tvTitle?.visibility = INVISIBLE
+
+        // adding the exercise view to the UI
         binding?.flExerciseView?.visibility = VISIBLE
-        binding?.tvTitle?.text = "Exercise Name 1"
+        binding?.tvExerciseName?.visibility = VISIBLE
+        binding?.ivImage?.visibility = VISIBLE
+
 
         if(exerciseTimer != null ) {
             exerciseTimer?.cancel()
             exerciseProgress = 0
         }
+
+        binding?.ivImage?.setImageResource(exerciseList!![currentExercisePosition].getImage())
+        binding?.tvExerciseName?.text = exerciseList!![currentExercisePosition].getName()
         setExerciseProgressBar()
     }
 
@@ -103,8 +125,9 @@ class ExerciseActivity : AppCompatActivity() {
                 binding?.tvTimerExercise?.text = (exercisePeriod - exerciseProgress).toString()
             }
             override fun onFinish() {
-                Toast.makeText(this@ExerciseActivity, "Well done! REST...", Toast.LENGTH_SHORT).show()
-                setupRestView()
+                if(currentExercisePosition < exerciseList?.size!! -1 ) {
+                    setupRestView()
+                }
             }
         }.start()
 
