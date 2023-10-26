@@ -3,11 +3,8 @@ package com.course.stretchesapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
-import android.widget.Toast
-import android.widget.ToggleButton
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
 
 class ExerciseActivity : AppCompatActivity() {

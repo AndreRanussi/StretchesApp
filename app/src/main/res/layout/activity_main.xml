@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/myImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/llTimerInput"
+        app:layout_constraintBottom_toTopOf="@+id/tvRestTime"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/item_color_accent_border_ripple_background"
@@ -43,76 +43,125 @@
 
     </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/llTimerInput"
+    <TextView
+        android:id="@+id/tvRestTime"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flStart"
+        app:layout_constraintBottom_toTopOf="@+id/sbRestTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="80dp"
+
+
+        android:text="Rest Timer"
+        android:textColor="@color/colorPrimary"
+        android:textSize="17sp"
+            />
+
+
+    <SeekBar
+        android:id="@+id/sbRestTimer"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+
+        android:layout_width="300dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+
+        android:max="12"
+
+        android:progress="3"
+        android:progressTint="#008E24"
+        android:thumbTint="#F79306"
+
+        app:layout_constraintBottom_toTopOf="@id/tvExerciseTime"
+        app:layout_constraintEnd_toStartOf="@id/tvRestTimeShow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flStart"
-        android:gravity="center"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
-        >
+        app:layout_constraintTop_toBottomOf="@id/tvRestTime"
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rest Timer"
-            android:layout_gravity="start"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
-            android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/tvRestTimeShow"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+
+        android:text="10"
+        android:textColor="@color/colorPrimary"
+
+        android:textSize="17sp"
+        app:layout_constraintStart_toEndOf="@id/sbRestTimer"
+        app:layout_constraintTop_toBottomOf="@id/tvRestTime"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/tvExerciseTime"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sbRestTimer"
+        app:layout_constraintBottom_toTopOf="@+id/sbExerciseTimer"
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="15dp"
+
+        android:text="Exercise Timer"
+        android:textColor="@color/colorPrimary"
+        android:textSize="17sp"
+        />
+
+
+    <TextView
+        android:id="@+id/tvExerciseTimeShow"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+
+        android:text="30"
+        android:textColor="@color/colorPrimary"
+
+        android:textSize="17sp"
+        app:layout_constraintStart_toEndOf="@id/sbExerciseTimer"
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <SeekBar
+        android:id="@+id/sbExerciseTimer"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+
+
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvExerciseTimeShow"
+
+        android:layout_width="300dp"
+        android:layout_height="23dp"
+        android:max="12"
+        android:progress="6"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:thumbTint="#F79306"
+        android:progressTint="#008E24"
             />
-
-        <SeekBar
-            android:id="@+id/sbRestTimer"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:max="12"
-            android:progress="3"
-
-            android:thumbTint="#F79306"
-            android:progressTint="#008E24"
-
-
-            />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Exercise Timer"
-            android:layout_gravity="start"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:layout_marginTop="15dp"
-            />
-
-        <SeekBar
-            android:id="@+id/sbExerciseTimer"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="12"
-            android:progress="6"
-            android:layout_marginTop="5dp"
-
-            android:thumbTint="#F79306"
-            android:progressTint="#008E24"
-            />
-
-
-
-    </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
