@@ -11,11 +11,11 @@ class ExerciseActivity : AppCompatActivity() {
     private var binding: ActivityExerciseBinding? = null
 
     private var restTimer: CountDownTimer? = null
-    private var restPeriod = 3
+    private var restPeriod = intent.getIntExtra("restTime", 15)
     private var restProgress = 0
 
     private var exerciseTimer: CountDownTimer? = null
-    private var exercisePeriod = 5
+    private var exercisePeriod = intent.getIntExtra("exerciseTime", 30)
     private var exerciseProgress = 0
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
