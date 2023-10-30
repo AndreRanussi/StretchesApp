@@ -1,5 +1,6 @@
 package com.course.stretchesapp
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -7,21 +8,21 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
 
+
 class ExerciseActivity : AppCompatActivity() {
+
     private var binding: ActivityExerciseBinding? = null
 
     private var restTimer: CountDownTimer? = null
-    private var restPeriod = intent.getIntExtra("restTime", 15)
+    private var restPeriod = 0
     private var restProgress = 0
 
     private var exerciseTimer: CountDownTimer? = null
-    private var exercisePeriod = intent.getIntExtra("exerciseTime", 30)
+    private var exercisePeriod = 0
     private var exerciseProgress = 0
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +35,15 @@ class ExerciseActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
-
         exerciseList = Constants.defaultExerciseList()
 
         binding?.toolbarExercise?.setNavigationOnClickListener {
             onBackPressed()
         }
+
+       
+        restPeriod = intent.getIntExtra("restTime", 15)
+        exercisePeriod = intent.getIntExtra("exerciseTime", 30)
 
         setupRestView()
 
@@ -58,7 +62,7 @@ class ExerciseActivity : AppCompatActivity() {
 
 
         binding?.flExerciseView?.visibility = INVISIBLE
-        if (currentExercisePosition < 0) {
+        if (currentExercisePosition <= 0) {
             binding?.tvTitle?.text = "GET READY"
         } else {
             binding?.tvTitle?.text = "REST"
