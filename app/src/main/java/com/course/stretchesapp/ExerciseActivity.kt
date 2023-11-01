@@ -41,7 +41,6 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-       
         restPeriod = intent.getIntExtra("restTime", 15)
         exercisePeriod = intent.getIntExtra("exerciseTime", 30)
 
@@ -60,6 +59,10 @@ class ExerciseActivity : AppCompatActivity() {
         binding?.tvExerciseName?.visibility = INVISIBLE
         binding?.ivImage?.visibility = INVISIBLE
 
+        //Rest views upcoming
+        binding?.tvUpcomingLabel?.visibility = VISIBLE
+        binding?.tvExerciseName?.visibility = VISIBLE
+
 
         binding?.flExerciseView?.visibility = INVISIBLE
         if (currentExercisePosition <= 0) {
@@ -72,6 +75,9 @@ class ExerciseActivity : AppCompatActivity() {
             restTimer?.cancel()
             restProgress = 0
         }
+        binding?.tvUpcomingExerciseName?.text = exerciseList!![currentExercisePosition+1].getName()
+
+
         setRestProgressBar()
     }
 
@@ -84,6 +90,10 @@ class ExerciseActivity : AppCompatActivity() {
         binding?.flExerciseView?.visibility = VISIBLE
         binding?.tvExerciseName?.visibility = VISIBLE
         binding?.ivImage?.visibility = VISIBLE
+
+        //Rest views upcoming
+        binding?.tvUpcomingLabel?.visibility = INVISIBLE
+        binding?.tvExerciseName?.visibility = INVISIBLE
 
 
         if(exerciseTimer != null ) {
