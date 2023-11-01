@@ -8,8 +8,8 @@ import com.course.stretchesapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
-    var restTime = 0
-    var exerciseTime = 0
+    var restTime = 15
+    var exerciseTime = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
 
 
@@ -37,12 +38,12 @@ class ExerciseActivity : AppCompatActivity() {
 
         exerciseList = Constants.defaultExerciseList()
 
+        restPeriod = intent.getIntExtra("restTime", 15)
+        exercisePeriod = intent.getIntExtra("exerciseTime", 30)
+
         binding?.toolbarExercise?.setNavigationOnClickListener {
             onBackPressed()
         }
-
-        restPeriod = intent.getIntExtra("restTime", 15)
-        exercisePeriod = intent.getIntExtra("exerciseTime", 30)
 
         setupRestView()
 
@@ -61,7 +62,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         //Rest views upcoming
         binding?.tvUpcomingLabel?.visibility = VISIBLE
-        binding?.tvExerciseName?.visibility = VISIBLE
+        binding?.tvUpcomingExerciseName?.visibility = VISIBLE
 
 
         binding?.flExerciseView?.visibility = INVISIBLE
@@ -93,7 +94,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         //Rest views upcoming
         binding?.tvUpcomingLabel?.visibility = INVISIBLE
-        binding?.tvExerciseName?.visibility = INVISIBLE
+        binding?.tvUpcomingExerciseName?.visibility = INVISIBLE
 
 
         if(exerciseTimer != null ) {
@@ -119,7 +120,6 @@ class ExerciseActivity : AppCompatActivity() {
             override fun onFinish() {
                 currentExercisePosition++
                 setupExerciseView()
-
             }
         }.start()
 
