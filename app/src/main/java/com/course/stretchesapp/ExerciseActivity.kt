@@ -44,12 +44,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         exerciseList = Constants.defaultExerciseList()
 
-
-
-        tts = TextToSpeech(this, this)
-
         restPeriod = intent.getIntExtra("restTime", 15)
         exercisePeriod = intent.getIntExtra("exerciseTime", 30)
+
+        tts = TextToSpeech(this, this)
 
         binding?.toolbarExercise?.setNavigationOnClickListener {
             onBackPressed()
@@ -74,12 +72,15 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding?.tvUpcomingLabel?.visibility = VISIBLE
         binding?.tvUpcomingExerciseName?.visibility = VISIBLE
 
-
         binding?.flExerciseView?.visibility = INVISIBLE
-        if (currentExercisePosition <= 0) {
+
+        if (currentExercisePosition+1 <= 0) {
             binding?.tvTitle?.text = "GET READY"
+            speakOut("Get Ready for ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds")
+            Toast.makeText(this , "Get Ready for ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds", Toast.LENGTH_LONG).show()
         } else {
             binding?.tvTitle?.text = "REST"
+            speakOut("The next exercise is ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds")
         }
 
         if(restTimer != null ) {
@@ -111,8 +112,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             exerciseTimer?.cancel()
             exerciseProgress = 0
         }
-
-        speakOut(exerciseList!![currentExercisePosition].getName())
 
         binding?.ivImage?.setImageResource(exerciseList!![currentExercisePosition].getImage())
         binding?.tvExerciseName?.text = exerciseList!![currentExercisePosition].getName()
