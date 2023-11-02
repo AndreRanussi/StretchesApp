@@ -4,13 +4,16 @@ package com.course.stretchesapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
+import java.util.Locale
 
 
-class ExerciseActivity : AppCompatActivity() {
+class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var binding: ActivityExerciseBinding? = null
 
@@ -25,6 +28,9 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
 
+    private var tts: TextToSpeech? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -37,6 +43,10 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         exerciseList = Constants.defaultExerciseList()
+
+
+
+        tts = TextToSpeech(this, this)
 
         restPeriod = intent.getIntExtra("restTime", 15)
         exercisePeriod = intent.getIntExtra("exerciseTime", 30)
@@ -102,6 +112,8 @@ class ExerciseActivity : AppCompatActivity() {
             exerciseProgress = 0
         }
 
+        speakOut(exerciseList!![currentExercisePosition].getName())
+
         binding?.ivImage?.setImageResource(exerciseList!![currentExercisePosition].getImage())
         binding?.tvExerciseName?.text = exerciseList!![currentExercisePosition].getName()
         setExerciseProgressBar()
@@ -143,6 +155,23 @@ class ExerciseActivity : AppCompatActivity() {
         }.start()
 
     }
+    override fun onInit(status: Int) {
+        if(status == TextToSpeech.SUCCESS) {
+             val result = tts?.setLanguage(Locale.UK)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "The Language specified is not supported.")
+            }
+        } else {
+            Log.e("TTS", "Initialisation Failed")
+        }
+    }
+
+     private fun speakOut(text: String) {
+         tts!!.speak(text, TextToSpeech.QUEUE_ADD, null, "")
+     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -157,7 +186,14 @@ class ExerciseActivity : AppCompatActivity() {
             exerciseProgress = 0
         }
 
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+
         binding = null
     }
 
 }
+
+
