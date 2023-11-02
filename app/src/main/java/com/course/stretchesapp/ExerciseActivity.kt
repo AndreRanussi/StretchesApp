@@ -4,6 +4,8 @@ package com.course.stretchesapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View.INVISIBLE
@@ -53,7 +55,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             onBackPressed()
         }
 
-        setupRestView()
+        val mainHandler = Handler(Looper.getMainLooper())
+
+        mainHandler.postDelayed( {
+            setupRestView()
+        }, 100)
 
     }
 
@@ -154,7 +160,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }.start()
 
     }
-    override fun onInit(status: Int) {
+    override fun onInit(status: Int){
         if(status == TextToSpeech.SUCCESS) {
              val result = tts?.setLanguage(Locale.UK)
 
@@ -164,10 +170,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         } else {
             Log.e("TTS", "Initialisation Failed")
         }
+
     }
 
      private fun speakOut(text: String) {
-         tts!!.speak(text, TextToSpeech.QUEUE_ADD, null, "")
+         tts!!.speak(text, TextToSpeech.QUEUE_ADD, null, null)
      }
 
 
