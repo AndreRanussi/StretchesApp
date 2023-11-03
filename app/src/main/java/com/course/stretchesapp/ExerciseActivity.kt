@@ -86,7 +86,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (currentExercisePosition+1 <= 0) {
             binding?.tvTitle?.text = "GET READY"
             speakOut("Get Ready for ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds")
-            Toast.makeText(this , "Get Ready for ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds", Toast.LENGTH_LONG).show()
         } else {
             binding?.tvTitle?.text = "REST"
             speakOut("The next exercise is ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds")
@@ -142,7 +141,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         mainHandler.postDelayed( {
             setExerciseProgressBar()
-        }, 1000)
+        }, 1500)
 
 
     }
