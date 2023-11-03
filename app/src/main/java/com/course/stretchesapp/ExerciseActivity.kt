@@ -63,6 +63,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         val mainHandler = Handler(Looper.getMainLooper())
 
+        // adding a timer delay in order to allow for the Text to Speech engine to load. 
         mainHandler.postDelayed( {
             setupRestView()
         }, 100)
