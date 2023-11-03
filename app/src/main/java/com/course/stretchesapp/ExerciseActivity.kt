@@ -1,6 +1,8 @@
 package com.course.stretchesapp
 
 
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -31,6 +33,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var currentExercisePosition = -1
 
     private var tts: TextToSpeech? = null
+    private var player: MediaPlayer? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,6 +103,18 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun setupExerciseView(){
+        // start bell
+        try {
+            val soundURI = Uri.parse(
+                "android.resource://com.course.stretchesapp/" + R.raw.boxing_bell)
+            player = MediaPlayer.create(applicationContext, soundURI)
+            player?.isLooping = false
+            player?.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+
         // removing rest view from the UI
         binding?.flRestView?.visibility = INVISIBLE
         binding?.tvTitle?.visibility = INVISIBLE
@@ -121,7 +136,15 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding?.ivImage?.setImageResource(exerciseList!![currentExercisePosition].getImage())
         binding?.tvExerciseName?.text = exerciseList!![currentExercisePosition].getName()
-        setExerciseProgressBar()
+
+
+        val mainHandler = Handler(Looper.getMainLooper())
+
+        mainHandler.postDelayed( {
+            setExerciseProgressBar()
+        }, 1000)
+
+
     }
 
     private fun setRestProgressBar() {
@@ -195,6 +218,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (tts != null) {
             tts!!.stop()
             tts!!.shutdown()
+        }
+
+        if (player != null) {
+            player!!.stop()
         }
 
         binding = null
