@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
 import java.util.Locale
 
@@ -34,6 +35,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var tts: TextToSpeech? = null
     private var player: MediaPlayer? = null
+
+    private var exerciseAdapter: ExerciseStatusAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +67,15 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             setupRestView()
         }, 100)
 
+        setUpExerciseStatusRecyclerView()
+
+    }
+
+    private fun setUpExerciseStatusRecyclerView() {
+        binding?.rvExerciseStatus?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!)
+        binding?.rvExerciseStatus?.adapter = exerciseAdapter
     }
 
 
