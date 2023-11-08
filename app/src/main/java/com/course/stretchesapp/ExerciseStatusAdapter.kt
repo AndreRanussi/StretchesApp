@@ -1,5 +1,6 @@
 package com.course.stretchesapp
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -32,14 +33,18 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>):
 
         when {
             model.getIsSelected() -> {
-                holder.tvItem.background = ContextCompat.getDrawable(holder.itemView.context,R.drawable.item_circular_color_thin_color_accent_border)
+                holder.tvItem.background = ContextCompat.getDrawable(holder.itemView.context,R.drawable.item_circular_thin_color_accent_border)
+                holder.tvItem.setTextColor(Color.parseColor("#212121"))
 
             }
             model.getIsCompleted() -> {
+                holder.tvItem.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.item_circular_color_accent_background)
+                holder.tvItem.setTextColor(Color.parseColor("#ffffff"))
 
             }
             else -> {
-
+                holder.tvItem.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.item_circular_color_gray_background)
+                holder.tvItem.setTextColor(Color.parseColor("#212121"))
             }
 
         }

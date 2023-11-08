@@ -111,7 +111,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding?.tvUpcomingExerciseName?.text = exerciseList!![currentExercisePosition+1].getName()
 
 
+
         setRestProgressBar()
+
     }
 
     private fun setupExerciseView(){
@@ -168,12 +170,17 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 restProgress++
                 binding?.progressBar?.progress = restPeriod - restProgress
                 binding?.tvTimer?.text = (restPeriod - restProgress).toString()
+
+
+                exerciseList!![currentExercisePosition+1].setIsSelected(true)
+                exerciseAdapter!!.notifyDataSetChanged()
             }
             override fun onFinish() {
                 currentExercisePosition++
                 setupExerciseView()
             }
         }.start()
+
 
     }
 
@@ -188,6 +195,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding?.tvTimerExercise?.text = (exercisePeriod - exerciseProgress).toString()
             }
             override fun onFinish() {
+                exerciseList!![currentExercisePosition].setIsSelected(false)
+                exerciseList!![currentExercisePosition].setIsCompleted(true)
+                exerciseAdapter!!.notifyDataSetChanged()
+
                 if(currentExercisePosition < exerciseList?.size!! -1 ) {
                     setupRestView()
                 }
