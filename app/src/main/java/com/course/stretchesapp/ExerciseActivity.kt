@@ -14,6 +14,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
 import com.course.stretchesapp.databinding.DialogCustomBackConfirmationBinding
@@ -71,7 +72,17 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }, 100)
 
         setUpExerciseStatusRecyclerView()
+        setupOnBackPressed()
 
+    }
+
+
+    private fun setupOnBackPressed() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                customDialogForBackButton()
+            }
+        })
     }
 
     private fun customDialogForBackButton() {
