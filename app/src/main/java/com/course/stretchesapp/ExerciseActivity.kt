@@ -196,13 +196,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding?.tvTimerExercise?.text = (exercisePeriod - exerciseProgress).toString()
             }
             override fun onFinish() {
-                exerciseList!![currentExercisePosition].setIsSelected(false)
-                exerciseList!![currentExercisePosition].setIsCompleted(true)
-                exerciseAdapter!!.notifyDataSetChanged()
-
                 if(currentExercisePosition < exerciseList?.size!! -1 ) {
+                    exerciseList!![currentExercisePosition].setIsSelected(false)
+                    exerciseList!![currentExercisePosition].setIsCompleted(true)
+                    exerciseAdapter!!.notifyDataSetChanged()
                     setupRestView()
                 } else {
+                    finish()
                     val intent = Intent(this@ExerciseActivity, FinishActivity::class.java )
                     startActivity(intent)
                 }

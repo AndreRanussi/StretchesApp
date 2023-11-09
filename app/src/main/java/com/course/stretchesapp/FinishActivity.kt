@@ -19,9 +19,12 @@ class FinishActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
+        binding?.toolbarFinishActivity?.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
     binding?.btnFinish?.setOnClickListener{
-        val intent  = Intent(this@FinishActivity, MainActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 
 
