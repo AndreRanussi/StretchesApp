@@ -1,6 +1,7 @@
 package com.course.stretchesapp
 
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,6 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
 import java.util.Locale
@@ -98,10 +98,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         if (currentExercisePosition+1 <= 0) {
             binding?.tvTitle?.text = "GET READY"
-            speakOut("Get Ready for ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds")
+            speakOut("Get Ready for ${exerciseList!![currentExercisePosition+1].getName()}")
+
         } else {
             binding?.tvTitle?.text = "REST"
-            speakOut("The next exercise is ${exerciseList!![currentExercisePosition+1].getName()} in $restPeriod seconds")
+            speakOut("The next exercise is ${exerciseList!![currentExercisePosition+1].getName()}")
         }
 
         if(restTimer != null ) {
@@ -156,7 +157,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         mainHandler.postDelayed( {
             setExerciseProgressBar()
-        }, 1500)
+        }, 1000)
 
 
     }
@@ -201,6 +202,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                 if(currentExercisePosition < exerciseList?.size!! -1 ) {
                     setupRestView()
+                } else {
+                    val intent = Intent(this@ExerciseActivity, FinishActivity::class.java )
+                    startActivity(intent)
                 }
             }
         }.start()
