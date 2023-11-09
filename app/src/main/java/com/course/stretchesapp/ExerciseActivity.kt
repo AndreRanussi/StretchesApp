@@ -1,6 +1,7 @@
 package com.course.stretchesapp
 
 
+import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
@@ -15,6 +16,7 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.course.stretchesapp.databinding.ActivityExerciseBinding
+import com.course.stretchesapp.databinding.DialogCustomBackConfirmationBinding
 import java.util.Locale
 
 
@@ -58,7 +60,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts = TextToSpeech(this, this)
 
         binding?.toolbarExercise?.setNavigationOnClickListener {
-            onBackPressed()
+            customDialogForBackButton()
         }
 
         val mainHandler = Handler(Looper.getMainLooper())
@@ -70,6 +72,25 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         setUpExerciseStatusRecyclerView()
 
+    }
+
+    private fun customDialogForBackButton() {
+        val customDialog = Dialog(this)
+        val dialogBinding = DialogCustomBackConfirmationBinding.inflate(layoutInflater)
+        customDialog.setContentView(dialogBinding.root)
+        customDialog.setCanceledOnTouchOutside(false)
+
+
+        dialogBinding.btnYes.setOnClickListener{
+            this@ExerciseActivity.finish()
+            customDialog.dismiss()
+        }
+
+        dialogBinding.btnNo.setOnClickListener{
+            customDialog.dismiss()
+        }
+
+        customDialog.show()
     }
 
     private fun setUpExerciseStatusRecyclerView() {
