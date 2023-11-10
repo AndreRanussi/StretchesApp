@@ -52,6 +52,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (supportActionBar != null) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
+        supportActionBar!!.title = "Stretches"
 
         exerciseList = Constants.defaultExerciseList()
 
@@ -215,7 +216,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
 
     }
-
     private fun setExerciseProgressBar() {
         binding?.progressBarExercise?.progress = restProgress
         binding?.progressBarExercise?.max = exercisePeriod

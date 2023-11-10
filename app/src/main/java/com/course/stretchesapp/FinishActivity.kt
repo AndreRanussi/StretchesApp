@@ -3,6 +3,7 @@ package com.course.stretchesapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import com.course.stretchesapp.databinding.ActivityFinishBinding
 
 class FinishActivity : AppCompatActivity() {
@@ -14,20 +15,16 @@ class FinishActivity : AppCompatActivity() {
         binding = ActivityFinishBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        setSupportActionBar(binding?.toolbarFinishActivity)
-        if(supportActionBar != null) {
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding?.btnFinish?.setOnClickListener{
+            finish()
         }
 
-        binding?.toolbarFinishActivity?.setNavigationOnClickListener {
-            onBackPressed()
-        }
 
-    binding?.btnFinish?.setOnClickListener{
-        finish()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
 
-
+        binding = null
     }
 }
