@@ -39,6 +39,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiHeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -57,5 +58,103 @@
             android:hint="HEIGHT (cm)"
             android:textColorHint="#7A8089"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/tvYourBmi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tiHeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:text="YOUR BMI"
+        android:textSize="20sp"
+
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:textColor="#7A8089"
+
+        />
+
+    <TextView
+        android:id="@+id/tvBmi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvYourBmi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:text="25.21"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="#7A8089"
+        />
+
+    <TextView
+        android:id="@+id/tvBmiResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvBmi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:text="Overweight!"
+        android:textSize="20sp"
+
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="#7A8089"
+
+        />
+
+    <TextView
+        android:id="@+id/tvBmiResultMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvBmiResult"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:text="Oopps! Your really need to take care of yourself! Workout Maybe!"
+        android:textSize="20sp"
+
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:textColor="#7A8089"
+
+        />
+
+    <Button
+        android:id="@+id/btnBmi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvBmiResultMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:text="CALCULATE"
+        android:textSize="20sp"
+
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        />
+
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>

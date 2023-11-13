@@ -21,9 +21,10 @@ class BmiCalculatorActivity : AppCompatActivity() {
         supportActionBar!!.title = "BMI Calculator"
 
         binding?.toolbarFinishActivity?.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
 
     }
-
 }
+
+
