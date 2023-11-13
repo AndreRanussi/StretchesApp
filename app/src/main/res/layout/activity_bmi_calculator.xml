@@ -28,14 +28,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_finish_Activity"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textColor="@color/black"
             android:hint="WEIGHT (kg)"
-            android:textColorHint="#7A8089"/>
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            android:textColorHint="#7A8089" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,7 +54,7 @@
             android:id="@+id/etHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColor="@color/black"
             android:hint="HEIGHT (cm)"
             android:textColorHint="#7A8089"/>
