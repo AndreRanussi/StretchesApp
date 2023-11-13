@@ -173,18 +173,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sbExerciseTimer"
-        android:background="@drawable/item_color_accent_border_ripple_background_bmi"
+        android:background="@drawable/item_color_accent_border_ripple_background"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BMI Calculator "
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:textStyle="bold"
+            android:padding="10dp"
 
             />
 
