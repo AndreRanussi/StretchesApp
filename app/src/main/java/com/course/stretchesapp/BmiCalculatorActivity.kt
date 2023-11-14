@@ -20,8 +20,7 @@ class BmiCalculatorActivity : AppCompatActivity() {
     private var weight: Double? = null
     private var bmiResult: Double? = null
     private var result: String? = null
-    private var resultMessage: String? = null
-    private var fieldCheckerFlag = false
+       private var fieldCheckerFlag = false
 
     private var etHeight = binding?.etHeight?.text.toString()
     private var etWeight = binding?.etWeight?.text.toString()
@@ -101,11 +100,8 @@ class BmiCalculatorActivity : AppCompatActivity() {
 
 
     private fun checkFields(): Boolean {
-        etHeight = binding?.etHeight?.text.toString()
-        etWeight = binding?.etWeight?.text.toString()
-
-        if(etWeight.isEmpty()) return false
-        if(etHeight.isEmpty()) return false
+        if(binding?.etHeight?.text.toString().isEmpty()) return false
+        if(binding?.etWeight?.text.toString().isEmpty()) return false
     return true
     }
 

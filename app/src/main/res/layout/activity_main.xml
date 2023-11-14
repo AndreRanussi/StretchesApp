@@ -5,36 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/main_screen_main_layout_padding"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
 
-   <ImageView
-       android:id="@+id/myImageView"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintBottom_toTopOf="@+id/flStart"
-       android:contentDescription="@string/image"
-       android:src="@drawable/img_main_page"
-       android:layout_width="match_parent"
-       android:layout_height="220dp"
-       />
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:contentDescription="Main logo image - 7min workout"
+        android:src="@drawable/img_main_page"
+        app:layout_constraintBottom_toTopOf="@+id/flStart"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="5dp" />
 
     <FrameLayout
         android:id="@+id/flStart"
-        app:layout_constraintTop_toBottomOf="@+id/myImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tvRestTime"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/item_color_accent_border_ripple_background"
+        app:layout_constraintBottom_toTopOf="@+id/flHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sbExerciseTimer"
+        app:layout_constraintStart_toStartOf="parent"
         >
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="START"
             android:layout_gravity="center"
+            android:text="START"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/default_button_text_size"
             android:textStyle="bold"
@@ -46,33 +45,31 @@
     <TextView
         android:id="@+id/tvRestTime"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flStart"
-        app:layout_constraintBottom_toTopOf="@+id/sbRestTimer"
-        app:layout_constraintEnd_toEndOf="parent"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="25dp"
+
         android:layout_marginEnd="25dp"
-        android:layout_marginTop="80dp"
-
-
         android:text="Rest Timer"
+
         android:textColor="@color/colorPrimary"
         android:textSize="17sp"
-            />
+        app:layout_constraintBottom_toTopOf="@+id/sbRestTimer"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myImageView" />
 
 
     <SeekBar
         android:id="@+id/sbRestTimer"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        style="@style/Widget.AppCompat.SeekBar"
 
         android:layout_width="300dp"
         android:layout_height="23dp"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
 
         android:max="12"
 
@@ -100,31 +97,30 @@
         android:textColor="@color/colorPrimary"
 
         android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/sbRestTimer"
         app:layout_constraintTop_toBottomOf="@id/tvRestTime"
-        app:layout_constraintEnd_toEndOf="parent"
 
         />
 
     <TextView
         android:id="@+id/tvExerciseTime"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sbRestTimer"
-        app:layout_constraintBottom_toTopOf="@+id/sbExerciseTimer"
-
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
 
         android:text="Exercise Timer"
         android:textColor="@color/colorPrimary"
         android:textSize="17sp"
-        />
+
+        app:layout_constraintBottom_toTopOf="@+id/sbExerciseTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sbRestTimer" />
 
 
     <TextView
@@ -140,60 +136,105 @@
         android:textColor="@color/colorPrimary"
 
         android:textSize="17sp"
-        app:layout_constraintStart_toEndOf="@id/sbExerciseTimer"
-        app:layout_constraintTop_toBottomOf="@id/tvExerciseTime"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toEndOf="@id/sbExerciseTimer"
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseTime" />
 
     <SeekBar
         android:id="@+id/sbExerciseTimer"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        style="@style/Widget.AppCompat.SeekBar"
 
-
-        app:layout_constraintTop_toBottomOf="@id/tvExerciseTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvExerciseTimeShow"
 
         android:layout_width="300dp"
         android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:max="12"
         android:progress="6"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="10dp"
-        android:thumbTint="#F79306"
         android:progressTint="#008E24"
-            />
+        android:thumbTint="#F79306"
+        app:layout_constraintEnd_toStartOf="@id/tvExerciseTimeShow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseTime" />
 
 
     <FrameLayout
         android:id="@+id/flBmiButton"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:background="@drawable/item_color_accent_border_ripple_background_green"
+        app:layout_constraintEnd_toStartOf="@+id/flHistory"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sbExerciseTimer"
-        android:background="@drawable/item_color_accent_border_ripple_background"
+        app:layout_constraintTop_toBottomOf="@+id/flStart"
+        app:layout_constraintBottom_toTopOf="@+id/tvBmiCalculator"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BMI Calculator "
-            android:textColor="@color/colorPrimaryDark"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-
-            />
-
-
-
-
-
-
+            android:text="BMI"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvBmiCalculator"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="Calculator"
+
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flBmiButton" />
+
+    <FrameLayout
+        android:id="@+id/flHistory"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/item_color_accent_border_ripple_background_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/flBmiButton"
+        app:layout_constraintTop_toBottomOf="@+id/flStart"
+        app:layout_constraintBottom_toTopOf="@+id/tvHistory"
+        tools:layout_editor_absoluteY="512dp">
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_history" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tvHistory"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+
+        android:text="History"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvBmiCalculator"
+
+        app:layout_constraintTop_toBottomOf="@+id/flHistory" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
