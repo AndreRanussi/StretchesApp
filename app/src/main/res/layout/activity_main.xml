@@ -13,9 +13,9 @@
         android:layout_height="220dp"
         android:contentDescription="Main logo image - 7min workout"
         android:src="@drawable/img_main_page"
-        app:layout_constraintBottom_toTopOf="@+id/flStart"
+        app:layout_constraintBottom_toTopOf="@+id/tvRestTime"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="5dp" />
+        />
 
     <FrameLayout
         android:id="@+id/flStart"
@@ -26,6 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sbExerciseTimer"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
         >
 
 
@@ -112,6 +113,7 @@
 
         android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
 
         android:text="Exercise Timer"
         android:textColor="@color/colorPrimary"
@@ -168,6 +170,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flStart"
         app:layout_constraintBottom_toTopOf="@+id/tvBmiCalculator"
+        android:layout_marginTop="60dp"
         >
 
         <TextView
@@ -193,7 +196,6 @@
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvHistory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flBmiButton" />
@@ -207,7 +209,8 @@
         app:layout_constraintStart_toEndOf="@+id/flBmiButton"
         app:layout_constraintTop_toBottomOf="@+id/flStart"
         app:layout_constraintBottom_toTopOf="@+id/tvHistory"
-        tools:layout_editor_absoluteY="512dp">
+        android:layout_marginTop="60dp"
+       >
 
         <ImageView
             android:layout_width="34dp"
@@ -230,11 +233,11 @@
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvBmiCalculator"
+        app:layout_constraintTop_toBottomOf="@+id/flHistory"
 
-        app:layout_constraintTop_toBottomOf="@+id/flHistory" />
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
