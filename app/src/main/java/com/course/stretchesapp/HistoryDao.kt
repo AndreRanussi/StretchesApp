@@ -22,7 +22,10 @@ interface HistoryDao {
     suspend fun delete(historyEntity: WorkoutHistoryEntity)
 
 
-    @Query("SELECT * FROM `WORKOUTS-HISTORY`")
+    @Query("SELECT * FROM `workouts_history`")
     fun fetchAllHistory():Flow<List<WorkoutHistoryEntity>>
+
+    @Query("SELECT * FROM `workouts_history` WHERE date=date")
+    fun fetchHistoryByDate(date: String):Flow<List<WorkoutHistoryEntity>>
 
 }
