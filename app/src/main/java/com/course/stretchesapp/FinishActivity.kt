@@ -36,11 +36,11 @@ class FinishActivity : AppCompatActivity() {
 
         val c = Calendar.getInstance()
         val dateTime = c.time
-        val sdf = SimpleDateFormat("dd/MM/yyyy-HH:mm:ss", Locale.getDefault())
+        val sdf = SimpleDateFormat("dd/MM/yyyy@HH:mm:ss", Locale.getDefault())
         val date = sdf.format(dateTime)
         lifecycleScope.launch {
             historyDao.insert(WorkoutHistoryEntity(date))
-            Log.e("date", "Added $date" )
+            Log.e("date", "Added $date")
         }
 
     }

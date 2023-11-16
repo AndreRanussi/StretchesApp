@@ -13,4 +13,8 @@ interface HistoryDao {
     @Insert
     suspend fun insert(historyEntity: WorkoutHistoryEntity)
 
+
+    @Query("SELECT * FROM workouts_history")
+    fun fetchAllDates():Flow<List<WorkoutHistoryEntity>>
+
 }
