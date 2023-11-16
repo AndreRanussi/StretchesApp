@@ -6,8 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "workouts_history")
 data class WorkoutHistoryEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id:Int = 0,
-    val date:String = "",
-    val completed:Boolean = false
+    @PrimaryKey
+    val date:String
 )
